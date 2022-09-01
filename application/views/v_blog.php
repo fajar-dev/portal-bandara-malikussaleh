@@ -1,33 +1,4 @@
-
-<!DOCTYPE html>
-<html class="no-js">
-	<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Blog</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="" />
-	<meta name="keywords" content="" />
-	<meta name="author" content="M Fikri Setiadi" />
-	<link rel="shorcut icon" type="text/css" href="<?php echo base_url().'assets/images/favicon.png'?>">
-
-	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-	<link rel="shortcut icon" href="<?php echo base_url().'theme/favicon.ico'?>">
-
-	<!-- Animate.css -->
-	<link rel="stylesheet" href="<?php echo base_url().'theme/css/animate.css'?>">
-	<!-- Icomoon Icon Fonts-->
-	<link rel="stylesheet" href="<?php echo base_url().'theme/css/icomoon.css'?>">
-	<!-- Bootstrap  -->
-	<link rel="stylesheet" href="<?php echo base_url().'theme/css/bootstrap.css'?>">
-	<!-- Flexslider  -->
-	<link rel="stylesheet" href="<?php echo base_url().'theme/css/flexslider.css'?>">
-	<!-- Theme style  -->
-	<link rel="stylesheet" href="<?php echo base_url().'theme/css/style.css'?>">
-
-	<!-- Modernizr JS -->
-	<script src="<?php echo base_url().'theme/js/modernizr-2.6.2.min.js'?>"></script>
-	<?php
+        <?php
             error_reporting(0);
             function limit_words($string, $word_limit){
                 $words = explode(" ",$string);
@@ -35,103 +6,93 @@
             }
 
         ?>
-	</head>
-	<body>
-
-
-	<div id="fh5co-page">
-	<header id="fh5co-header" role="banner">
-		<div class="container">
-			<div class="header-inner">
-				<h1><a href="<?php echo base_url().''?>">TECHNO<span>.</span></a></h1>
-				<nav role="navigation">
-					<ul>
-						<li><a href="<?php echo base_url().''?>">Home</a></li>
-						<li><a href="<?php echo base_url().'about'?>">About</a></li>
-						<li><a href="<?php echo base_url().'portfolio'?>">Portfolio</a></li>
-						<li class="active"><a href="<?php echo base_url().'artikel'?>">Blog</a></li>
-						<li><a href="<?php echo base_url().'gallery'?>">Gallery</a></li>
-						<li><a href="<?php echo base_url().'kontak'?>">Contact</a></li>
-						<li class="cta"><a href="<?php echo base_url().'portfolio'?>">Get started</a></li>
-					</ul>
-				</nav>
-			</div>
-		</div>
-	</header>
-
-
-	<aside id="fh5co-hero" clsas="js-fullheight">
-		<div class="flexslider js-fullheight">
-			<ul class="slides">
-		   	<li style="background-image: url(<?php echo base_url().'theme/images/slide_2.jpg'?>);">
-		   		<div class="overlay-gradient"></div>
-		   		<div class="container">
-		   			<div class="col-md-10 col-md-offset-1 text-center js-fullheight slider-text">
-		   				<div class="slider-text-inner">
-		   					<h2>Our Blog</h2>
-		   					<p class="fh5co-lead"> Awesome source code by <a href="http://mfikri.com/" target="_blank">M Fikri Setiadi</a></p>
-		   				</div>
-		   			</div>
-		   		</div>
-		   	</li>
-		  	</ul>
-	  	</div>
-	</aside>
-
-
-	<div class="fh5co-services">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-6 col-md-offset-3 text-center fh5co-heading animate-box">
-					<h2>ARTIKEL TERBARU</h2>
-				</div>
-				<?php
-				foreach ($data->result_array() as $j) :
-						$post_id=$j['tulisan_id'];
-						$post_judul=$j['tulisan_judul'];
-						$post_isi=$j['tulisan_isi'];
-						$post_author=$j['tulisan_author'];
-						$post_image=$j['tulisan_gambar'];
-						$post_tglpost=$j['tanggal'];
-						$post_slug=$j['tulisan_slug'];
-				?>
-					<div class="col-md-4">
-						<span class="icon"><img src="<?php echo base_url().'assets/images/'.$post_image;?>" class="img-responsive"></span>
-						<h3><a href="<?php echo base_url().'artikel/'.$post_slug;?>"><?php echo $post_judul;?></a></h3>
-						<span><?php echo $post_tglpost.' | '.$post_author;?></span>
-						<p><?php echo limit_words($post_isi,10).'...';?></em></p>
-						<p><a href="<?php echo base_url().'artikel/'.$post_slug;?>" class="btn btn-primary with-arrow">Selengkapnya <i class="icon-arrow-right"></i></a></p>
+<div class="main-wrapper ">
+<section class="section blog-wrap bg-gray">
+    <div class="container">
+        <div class="row">
+					<div class="col-12 mb-3">
+						<h2>Berita Terbaru</h2>
 					</div>
-					<?php endforeach;?>
+            <div class="col-lg-8">
+                <div class="row">
+                <?php
+                  foreach ($data->result_array() as $j) :
+                      $post_id=$j['tulisan_id'];
+                      $post_judul=$j['tulisan_judul'];
+                      $post_isi=$j['tulisan_isi'];
+                      $post_author=$j['tulisan_author'];
+                      $post_image=$j['tulisan_gambar'];
+                      $post_tglpost=$j['tanggal'];
+                      $post_slug=$j['tulisan_slug'];
+                  ?>
+	<div class="col-lg-6 col-md-6 mb-5">
+		<div class="blog-item">
+			<img src="<?php echo base_url().'assets/images/'.$post_image;?>" alt="" class="img-fluid rounded">
 
+			<div class="blog-item-content bg-white p-4">
+				<div class="blog-item-meta  py-1 px-2">
+					<span class="text-muted text-capitalize mr-3"><i class="ti-pencil-alt mr-2"></i>Creativity</span>
+				</div> 
+
+				<h3 class="mt-3 mb-3"><a href="<?php echo base_url().'artikel/'.$post_slug;?>"><?php echo $post_judul;?></a></h3>
+				<p class="mb-4"><?php echo limit_words($post_isi,10).'...';?></em></p>
+
+				<a href="<?php echo base_url().'artikel/'.$post_slug;?>" class="btn btn-small btn-main btn-round-full">Baca...</a>
 			</div>
 		</div>
-		<center><?php echo $page;?></center>
+	</div>
+  <?php endforeach;?>
+
+
+  </div>
+</div>
+
+<div class="col-lg-4">
+  <div class="sidebar-wrap">
+	<div class="sidebar-widget search card p-4 mb-3 border-0">
+		<input type="text" class="form-control" placeholder="search">
+		<a href="#" class="btn btn-mian btn-small d-block mt-2">search</a>
 	</div>
 
 
-
-	<?php $this->load->view('v_footer');?>
+	<div class="sidebar-widget latest-post card border-0 p-4 mb-3">
+		<h5>Kategori</h5>
+        <?php foreach($kat->result() as $i):?>
+        <div class="media border-bottom py-2">
+            <div class="media-body">
+                <span class="my-2"><a href="<?php echo base_url().'blog/kategori/'.$i->kategori_id;?>"><?php echo $i->kategori_nama.' ('.$i->jml.')';?></a></span>
+            </div>
+        </div>
+        <?php endforeach;?>
 	</div>
 
+	<div class="sidebar-widget latest-post card border-0 p-4 mb-3">
+		<h5> Posts Popular</h5>
+     <?php foreach ($populer->result() as $row) : ?>
+        <div class="media border-bottom py-3">
+            <a href="<?php echo base_url().'artikel/'.$row->tulisan_slug;?>"><img class="mr-4 img-fluid" width="100" src="<?php echo base_url().'assets/images/'.$row->tulisan_gambar;?>" alt=""></a>
+            <div class="media-body">
+                <h6 class="my-2"><a href="<?php echo base_url().'artikel/'.$row->tulisan_slug;?>"><?php echo $row->tulisan_judul;?></a></h6>
+                <span class="text-sm text-muted"><?php echo $row->tanggal;?></span>
+            </div>
+        </div>
+      <?php endforeach;?>
+	</div>
+</div>
+            </div>   
+        </div>
 
-	<!-- jQuery -->
-	<script src="<?php echo base_url().'theme/js/jquery.min.js'?>"></script>
-	<!-- jQuery Easing -->
-	<script src="<?php echo base_url().'theme/js/jquery.easing.1.3.js'?>"></script>
-	<!-- Bootstrap -->
-	<script src="<?php echo base_url().'theme/js/bootstrap.min.js'?>"></script>
-	<!-- Waypoints -->
-	<script src="<?php echo base_url().'theme/js/jquery.waypoints.min.js'?>"></script>
-	<!-- Easy PieChart -->
-	<script src="<?php echo base_url().'theme/js/jquery.easypiechart.min.js'?>"></script>
-	<!-- Flexslider -->
-	<script src="<?php echo base_url().'theme/js/jquery.flexslider-min.js'?>"></script>
-	<!-- Stellar -->
-	<script src="<?php echo base_url().'theme/js/jquery.stellar.min.js'?>"></script>
-
-	<!-- MAIN JS -->
-	<script src="<?php echo base_url().'theme/js/main.js'?>"></script>
-
-	</body>
-</html>
+        <div class="row mt-5">
+            <div class="col-lg-8">
+                <nav class="navigation pagination py-2 d-inline-block">
+                    <div class="nav-links">
+                        <a class="prev page-numbers" href="#">Prev</a>
+                        <span aria-current="page" class="page-numbers current">1</span>
+                        <a class="page-numbers" href="#">2</a>
+                        <a class="next page-numbers" href="#">Next</a>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>

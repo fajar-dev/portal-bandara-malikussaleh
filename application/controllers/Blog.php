@@ -27,8 +27,12 @@ class Blog extends CI_Controller{
         $this->pagination->initialize($config);
         $x['page'] =$this->pagination->create_links();
 		$x['data']=$this->m_tulisan->berita_perpage($offset,$limit);
-		$this->load->view('v_blog',$x);
-	}
+		$x['populer']=$this->m_tulisan->get_tulisan_populer();
+		$x['kat']=$this->m_tulisan->get_kategori_for_blog();
+		$this->load->view('include/v_header',$x);
+		$this->load->view('v_blog');
+		$this->load->view('include/v_footer');
+		}
 
 	function detail($slug){
 		$data=$this->m_tulisan->get_berita_by_slug($slug);

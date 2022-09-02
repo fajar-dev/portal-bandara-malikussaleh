@@ -8,8 +8,8 @@
   
   <meta name="author" content="themefisher.com">
 
-  <title>Megakit| Html5 Agency template</title>
-
+  <title>Bandara Malikussaleh</title>
+  <link rel="shorcut icon" type="text/css" href="<?php echo base_url().'assets/images/favicon.png'?>">
   <!-- bootstrap.min css -->
   <link rel="stylesheet" href="<?= base_url('template/') ?>plugins/bootstrap/css/bootstrap.min.css">
   <!-- Icon Font Css -->
@@ -36,16 +36,16 @@
 			<div class="row justify-content-between align-items-center">
 				<div class="col-lg-2 col-md-4">
 					<div class="header-top-socials text-center text-lg-left text-md-left">
-						<a href="https://www.facebook.com/themefisher" target="_blank"><i class="ti-instagram"></i></a>
-						<a href="https://www.facebook.com/themefisher" target="_blank"><i class="ti-facebook"></i></a>
-						<a href="https://twitter.com/themefisher" target="_blank"><i class="ti-twitter"></i></a>
-						<a href="https://github.com/themefisher/" target="_blank"><i class="ti-youtube"></i></a>
+						<a href="<?= $set->instagram ?>" target="_blank"><i class="ti-instagram"></i></a>
+						<a href="<?= $set->facebook ?>" target="_blank"><i class="ti-facebook"></i></a>
+						<a href="<?= $set->twitter?>" target="_blank"><i class="ti-twitter"></i></a>
+						<a href="<?= $set->youtube ?>" target="_blank"><i class="ti-youtube"></i></a>
 					</div>
 				</div>
 				<div class="col-lg-10 col-md-8 text-center text-lg-right text-md-right">
 					<div class="header-top-info">
-						<a href="tel:+23-345-67890"><i class="fa fa-phone mr-2"></i> : <span>+23-345-67890</span></a>
-						<a href="mailto:support@gmail.com" ><i class="fa fa-envelope mr-2"></i><span>support@gmail.com</span></a>
+						<a href="tel:<?= $set->kontak ?>"><i class="fa fa-phone mr-2"></i> : <span><?= $set->kontak ?></span></a>
+						<a href="mailto:<?= $set->email ?>" ><i class="fa fa-envelope mr-2"></i><span><?= $set->email ?></span></a>
 					</div>
 				</div>
 			</div>

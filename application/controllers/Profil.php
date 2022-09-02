@@ -8,6 +8,7 @@ class Profil extends CI_Controller{
 	}
 	function index(){
 		$x['profil'] = $this->db->get_where('tbl_profil', array('id'=> 1))->row();
+		$x['set'] = $this->db->get_where('tbl_setting', array('id'=> 1))->row();
 		$this->load->view('include/v_header',$x);
 		$this->load->view('v_profil');
 		$this->load->view('include/v_footer');

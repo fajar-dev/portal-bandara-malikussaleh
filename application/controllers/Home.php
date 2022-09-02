@@ -10,6 +10,7 @@ class Home extends CI_Controller{
 	function index(){
 		$x['post']=$this->m_tulisan->get_post_home();
 		$x['profil'] = $this->db->get_where('tbl_profil', array('id'=> 1))->row();
+		$x['set'] = $this->db->get_where('tbl_setting', array('id'=> 1))->row();
 		$this->load->view('include/v_header',$x);
 		$this->load->view('v_home');
 		$this->load->view('include/v_footer');

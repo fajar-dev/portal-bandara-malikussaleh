@@ -30,6 +30,7 @@ class Blog extends CI_Controller{
 		$x['populer']=$this->m_tulisan->get_tulisan_populer();
 		$x['kat']=$this->m_tulisan->get_kategori_for_blog();
 		$x['judul']= 'Berita Terbaru';
+		$x['set'] = $this->db->get_where('tbl_setting', array('id'=> 1))->row();
 		$this->load->view('include/v_header',$x);
 		$this->load->view('v_blog');
 		$this->load->view('include/v_footer');
@@ -40,11 +41,11 @@ class Blog extends CI_Controller{
 		$q=$data->row_array();
 		$kode=$q['tulisan_id'];
 		$this->m_tulisan->count_views($kode);
-		$x['rate']=$this->m_tulisan->cek_ip_rate($kode);
 		$x['data']=$this->m_tulisan->get_berita_by_slug($slug);
 		$x['populer']=$this->m_tulisan->get_tulisan_populer();
 		$x['terbaru']=$this->m_tulisan->get_tulisan_terbaru();
 		$x['kat']=$this->m_tulisan->get_kategori_for_blog();
+		$x['set'] = $this->db->get_where('tbl_setting', array('id'=> 1))->row();
 		$this->load->view('include/v_header',$x);
 		$this->load->view('v_blog_detail');
 		$this->load->view('include/v_footer');
@@ -74,6 +75,7 @@ class Blog extends CI_Controller{
 		$x['populer']=$this->m_tulisan->get_tulisan_populer();
 		$x['kat']=$this->m_tulisan->get_kategori_for_blog();
 		$hasil = $this->db->get_where('tbl_kategori', array('kategori_id'=> $id))->row();
+		$x['set'] = $this->db->get_where('tbl_setting', array('id'=> 1))->row();
 		$x['judul']= 'Kategori "'.$hasil->kategori_nama.'"';
 		$this->load->view('include/v_header',$x);
 		$this->load->view('v_blog');
@@ -86,68 +88,10 @@ class Blog extends CI_Controller{
 		$x['populer']=$this->m_tulisan->get_tulisan_populer();
 		$x['kat']=$this->m_tulisan->get_kategori_for_blog();
 		$x['judul']= 'Hasil Pencarian "'.$keyword.'"';
+		$x['set'] = $this->db->get_where('tbl_setting', array('id'=> 1))->row();
 		$this->load->view('include/v_header',$x);
 		$this->load->view('v_blog');
 		$this->load->view('include/v_footer');;
-	}
-
-	function komentar(){
-		$tulisan_id=$this->input->post('kode');
-		$nama=strip_tags(htmlspecialchars(str_replace("'", "", $this->input->post('nama',TRUE))));
-		$email=strip_tags(htmlspecialchars(str_replace("'", "", $this->input->post('email',TRUE))));
-		$web=strip_tags(htmlspecialchars(str_replace("'", "", $this->input->post('web',TRUE))));
-		$msg=strip_tags(trim(htmlspecialchars(str_replace("'", "", $this->input->post('message',TRUE)))));
-		$this->m_tulisan->post_komentar($nama,$email,$web,$msg,$tulisan_id);
-		echo $this->session->set_flashdata("msg","<div class='alert alert-info alert-dismissable'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button><strong>Informasi!</strong> Komentar Anda akan tampil setelah di moderasi oleh admin!</div>");
-		redirect('blog/detail/'.$tulisan_id);
-	}
-
-	function good($slug){
-		$data=$this->m_tulisan->get_berita_by_slug($slug);
-		if($data->num_rows() > 0){
-			$q=$data->row_array();
-			$kode=$q['tulisan_id'];
-			$this->m_tulisan->count_good($kode);
-			redirect('artikel/'.$slug);
-		}else{
-			redirect('artikel/'.$slug);
-		}
-	}
-
-	function like($slug){
-		$data=$this->m_tulisan->get_berita_by_slug($slug);
-		if($data->num_rows() > 0){
-			$q=$data->row_array();
-			$kode=$q['tulisan_id'];
-			$this->m_tulisan->count_like($kode);
-			redirect('artikel/'.$slug);
-		}else{
-			redirect('artikel/'.$slug);
-		}
-	}
-
-	function love($slug){
-		$data=$this->m_tulisan->get_berita_by_slug($slug);
-		if($data->num_rows() > 0){
-			$q=$data->row_array();
-			$kode=$q['tulisan_id'];
-			$this->m_tulisan->count_love($kode);
-			redirect('artikel/'.$slug);
-		}else{
-			redirect('artikel/'.$slug);
-		}
-	}
-
-	function genius($slug){
-		$data=$this->m_tulisan->get_berita_by_slug($slug);
-		if($data->num_rows() > 0){
-			$q=$data->row_array();
-			$kode=$q['tulisan_id'];
-			$this->m_tulisan->count_genius($kode);
-			redirect('artikel/'.$slug);
-		}else{
-			redirect('artikel/'.$slug);
-		}
 	}
 
 

@@ -2,8 +2,6 @@
 <?php 
     $query=$this->db->query("SELECT * FROM tbl_inbox WHERE inbox_status='1'");
     $jum_pesan=$query->num_rows();
-    $query1=$this->db->query("SELECT * FROM tbl_komentar WHERE komentar_status='0'");
-    $jum_komentar=$query1->num_rows();
 ?>
 <!DOCTYPE html>
 <html>
@@ -59,6 +57,22 @@
             </span>
           </a>
         </li>
+        <li>
+          <a href="<?php echo base_url().'admin/profil'?>">
+          <i class="fa fa-plane" aria-hidden="true"></i> <span>Profil</span>
+            <span class="pull-right-container">
+              <small class="label pull-right"></small>
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="<?php echo base_url().'admin/setting'?>">
+          <i class="fa fa-cog" aria-hidden="true"></i> <span>Setting</span>
+            <span class="pull-right-container">
+              <small class="label pull-right"></small>
+            </span>
+          </a>
+        </li>
         <li class="treeview active">
           <a href="#">
             <i class="fa fa-newspaper-o"></i>
@@ -71,20 +85,6 @@
             <li><a href="<?php echo base_url().'admin/tulisan/add_tulisan'?>"><i class="fa fa-thumb-tack"></i> Add New</a></li>
             <li class="active"><a href="<?php echo base_url().'admin/tulisan'?>"><i class="fa fa-list"></i> Post Lists</a></li>
             <li><a href="<?php echo base_url().'admin/kategori'?>"><i class="fa fa-wrench"></i> Kategori</a></li>
-          </ul>
-        </li>
-
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-code"></i>
-            <span>Portfolio</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="<?php echo base_url().'admin/portfolio/add_portfolio'?>"><i class="fa fa-thumb-tack"></i> Add Portfolio</a></li>
-            <li><a href="<?php echo base_url().'admin/portfolio'?>"><i class="fa fa-list"></i> Portfolio List</a></li>
           </ul>
         </li>
 
@@ -109,15 +109,6 @@
             <li><a href="<?php echo base_url().'admin/album'?>"><i class="fa fa-clone"></i> Album</a></li>
             <li><a href="<?php echo base_url().'admin/galeri'?>"><i class="fa fa-picture-o"></i> Photos</a></li>
           </ul>
-        </li>
-
-        <li>
-          <a href="<?php echo base_url().'admin/komentar'?>">
-            <i class="fa fa-comment"></i> <span>Komentar</span>
-            <span class="pull-right-container">
-              <small class="label pull-right bg-green"><?php echo $jum_komentar;?></small>
-            </span>
-          </a>
         </li>
         
         <li>
@@ -227,14 +218,7 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-  <footer class="main-footer">
-    <div class="pull-right hidden-xs">
-      <b>Version</b> 1.0
-    </div>
-    <strong>Copyright &copy; 2017 <a href="http://mfikri.com">M Fikri Setiadi</a>.</strong> All rights reserved.
-  </footer>
 
-  
   <div class="control-sidebar-bg"></div>
 </div>
 <!-- ./wrapper -->
@@ -288,7 +272,6 @@
 <!-- AdminLTE App -->
 <script src="<?php echo base_url().'assets/dist/js/app.min.js'?>"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="<?php echo base_url().'assets/dist/js/demo.js'?>"></script>
 <script type="text/javascript" src="<?php echo base_url().'assets/plugins/toast/jquery.toast.min.js'?>"></script>
 <!-- page script -->
 <script>

@@ -11,6 +11,7 @@ class Gallery extends CI_Controller{
 	function index(){
 		$x['alb']=$this->m_album->get_all_album();
 		$x['data']=$this->m_galeri->get_all_galeri();
+		$x['set'] = $this->db->get_where('tbl_setting', array('id'=> 1))->row();
 		$this->load->view('include/v_header',$x);
 		$this->load->view('v_gallery');
 		$this->load->view('include/v_footer');

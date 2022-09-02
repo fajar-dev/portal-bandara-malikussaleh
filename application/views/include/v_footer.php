@@ -5,7 +5,7 @@
 			<div class="col-lg-9 col-md-6 col-sm-6">
 				<div class="widget">
 					<h4 class="text-capitalize mb-4">Alamat</h4>
-					<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vero dolorum laboriosam cumque quia excepturi. Animi porro veritatis corporis natus. </p>
+					<p><?= $set->alamat ?> </p>
 				</div>
 			</div>
 
@@ -15,8 +15,8 @@
 					<div class="logo mb-4">
 						<h3>Kontak Kami</h3>
 					</div>
-					<h6><a href="tel:+23-345-67890" >Support@megakit.com</a></h6>
-					<a href="mailto:support@gmail.com"><span class="text-color h4">+23-456-6588</span></a>
+					<h6><a href="mailto:<?= $set->email ?>" ><?= $set->email ?></a></h6>
+					<a href="tel:<?= $set->kontak ?>"><span class="text-color h4"><?= $set->kontak ?></span></a>
 				</div>
 			</div>
 		</div>

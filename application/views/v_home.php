@@ -10,7 +10,7 @@
 
 <div class="main-wrapper ">
 <!-- Slider Start -->
-<section class="slider" style="background: url(<?= base_url('template/') ?>images/bg/pesawat1.jpg) no-repeat; background-size:cover;">
+<section class="slider" style="background: url(<?= base_url('assets/images/')?><?= $set->banner ?>) no-repeat; background-size:cover;">
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-9 col-md-10">
@@ -87,6 +87,11 @@
 				</div>
 			</div>
       <?php endforeach;?>
+		</div>
+		<div class="row">
+			<div class="col-12 text-center">
+			<a href="<?= base_url('blog') ?>" class="btn btn-main animated fadeInUp btn-round-full" >Lihat Lainnya<i class="btn-icon fa fa-angle-right ml-2"></i></a>
+			</div>
 		</div>
 	</div>
 </section>

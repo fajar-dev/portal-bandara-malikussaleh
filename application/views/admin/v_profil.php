@@ -2,15 +2,13 @@
 <?php 
     $query=$this->db->query("SELECT * FROM tbl_inbox WHERE inbox_status='1'");
     $jum_pesan=$query->num_rows();
-    $query1=$this->db->query("SELECT * FROM tbl_komentar WHERE komentar_status='0'");
-    $jum_komentar=$query1->num_rows();
 ?>
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>M-Techno | Add Portfolio</title>
+  <title> Profil</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="shorcut icon" type="text/css" href="<?php echo base_url().'assets/images/favicon.png'?>">
@@ -35,6 +33,8 @@
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="<?php echo base_url().'assets/dist/css/skins/_all-skins.min.css'?>">
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url().'assets/plugins/toast/jquery.toast.min.css'?>"/>
+
 
   
 </head>
@@ -62,6 +62,22 @@
             </span>
           </a>
         </li>
+        <li class="active">
+          <a href="<?php echo base_url().'admin/profil'?>">
+          <i class="fa fa-plane" aria-hidden="true"></i> <span>Profil</span>
+            <span class="pull-right-container">
+              <small class="label pull-right"></small>
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="<?php echo base_url().'admin/setting'?>">
+          <i class="fa fa-cog" aria-hidden="true"></i> <span>Setting</span>
+            <span class="pull-right-container">
+              <small class="label pull-right"></small>
+            </span>
+          </a>
+        </li>
         <li class="treeview">
           <a href="#">
             <i class="fa fa-newspaper-o"></i>
@@ -74,20 +90,6 @@
             <li><a href="<?php echo base_url().'admin/tulisan/add_tulisan'?>"><i class="fa fa-thumb-tack"></i> Add New</a></li>
             <li><a href="<?php echo base_url().'admin/tulisan'?>"><i class="fa fa-list"></i> Post Lists</a></li>
             <li><a href="<?php echo base_url().'admin/kategori'?>"><i class="fa fa-wrench"></i> Kategori</a></li>
-          </ul>
-        </li>
-
-        <li class="treeview active">
-          <a href="#">
-            <i class="fa fa-code"></i>
-            <span>Portfolio</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li class="active"><a href="<?php echo base_url().'admin/portfolio/add_portfolio'?>"><i class="fa fa-thumb-tack"></i> Add Portfolio</a></li>
-            <li><a href="<?php echo base_url().'admin/portfolio'?>"><i class="fa fa-list"></i> Portfolio List</a></li>
           </ul>
         </li>
 
@@ -114,14 +116,7 @@
           </ul>
         </li>
 
-        <li>
-          <a href="<?php echo base_url().'admin/komentar'?>">
-            <i class="fa fa-comment"></i> <span>Komentar</span>
-            <span class="pull-right-container">
-              <small class="label pull-right bg-green"><?php echo $jum_komentar;?></small>
-            </span>
-          </a>
-        </li>
+
         
         <li>
           <a href="<?php echo base_url().'admin/inbox'?>">
@@ -152,42 +147,45 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Portfolio
+        Profil
         <small></small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Portfolio</a></li>
-        <li class="active">Edit Portfolio</li>
+        <li><a href="#" class="active">Profil</a></li>
       </ol>
     </section>
 
-    <?php 
-      error_reporting(0);
-      $b=$data->row_array();
-    ?>
     <!-- Main content -->
     <section class="content">
 
       <!-- SELECT2 EXAMPLE -->
       <div class="box box-default">
         <div class="box-header with-border">
-          <h3 class="box-title">Judul</h3>
+          <h3 class="box-title">Update Profil</h3>
         </div>
 		
-		<form action="<?php echo base_url().'admin/portfolio/update_portfolio'?>" method="post" enctype="multipart/form-data">
+		<form action="<?php echo base_url().'admin/profil/simpan_profil'?>" method="post" enctype="multipart/form-data">
 		
         <!-- /.box-header -->
         <div class="box-body">
           <div class="row">
-            <div class="col-md-10">
-              <input type="hidden" name="kode" value="<?php echo $b['port_id'];?>" required>
-              <input type="text" name="xjudul" class="form-control" value="<?php echo $b['port_judul'];?>" placeholder="Judul" required/>
+            <div class="col-md-12">
+              <div class="my-3">
+                <label for="">foto</label><br>
+                <img src="<?= base_url('assets/images/')?><?= $profil->foto ?>" alt="" width="200" class="img-fluid rounded"><br><br>
+                <input type="file" name="foto" class="form-control" placeholder="Judul berita atau artikel" >
+              </div>
+              <div class="mt-5 pt-5">
+                <label for="">Content</label>
+                <textarea id="ckeditor" name="isi" required><?= $profil->isi ?></textarea>
+              </div>
+
             </div>
             <!-- /.col -->
-            <div class="col-md-2">
-              <div class="form-group">
-                <button type="submit" class="btn btn-primary btn-flat pull-right"><span class="fa fa-pencil"></span> Update</button>
+            <div class="col-md-12">
+            <div class="form-group pt-5" style="margin-top:20px;">
+                <button type="submit" class="btn btn-primary btn-flat pull-right"><span class="fa fa-save"></span> Simpan Perubahan</button>
               <!-- /.form-group -->
             </div>
             <!-- /.col -->
@@ -200,41 +198,6 @@
 	  </div>
       <!-- /.box -->
 
-      <div class="row">
-        <div class="col-md-8">
-
-          <div class="box box-danger">
-            <div class="box-header">
-              <h3 class="box-title">Deskripsi</h3>
-            </div>
-            <div class="box-body">
-			
-			<textarea id="ckeditor" name="xisi" required><?php echo $b['port_deskripsi'];?></textarea>
-              
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-
-        </div>
-        <!-- /.col (left) -->
-        <div class="col-md-4">
-          <div class="box box-primary">
-            <div class="box-header">
-              <h3 class="box-title">Pengaturan Lainnya</h3>
-            </div>
-            <div class="box-body">
-			  
-			  <div class="form-group">
-                <label>Gambar</label>
-                <input type="file" name="filefoto" style="width: 100%;" required>
-              </div>
-              <!-- /.form group -->
-			
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
 		</form>
           
           <!-- /.box -->
@@ -246,15 +209,8 @@
     </section>
     <!-- /.content -->
   </div>
-  <!-- /.content-wrapper -->
-  <footer class="main-footer">
-    <div class="pull-right hidden-xs">
-      <b>Version</b> 1.0
-    </div>
-    <strong>Copyright &copy; 2017 <a href="http://mfikri.com">M Fikri Setiadi</a>.</strong> All rights reserved.
-  </footer>
 
- 
+  
   <div class="control-sidebar-bg"></div>
 </div>
 <!-- ./wrapper -->
@@ -286,8 +242,9 @@
 <!-- AdminLTE App -->
 <script src="<?php echo base_url().'assets/dist/js/app.min.js'?>"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="<?php echo base_url().'assets/dist/js/demo.js'?>"></script>
 <script src="<?php echo base_url().'assets/ckeditor/ckeditor.js'?>"></script>
+<script type="text/javascript" src="<?php echo base_url().'assets/plugins/toast/jquery.toast.min.js'?>"></script>
+
 <!-- Page script -->
 
 <script>
@@ -368,5 +325,33 @@
     });
   });
 </script>
+
+<?php if($this->session->flashdata('msg')=='gagal'):?>
+        <script type="text/javascript">
+                $.toast({
+                    heading: 'Error',
+                    text: "Pastikan Gambar yang upload berekstensi jpg atau png",
+                    showHideTransition: 'slide',
+                    icon: 'error',
+                    hideAfter: false,
+                    position: 'bottom-right',
+                    bgColor: '#FF4859'
+                });
+        </script>
+    
+    <?php elseif($this->session->flashdata('msg')=='success'):?>
+        <script type="text/javascript">
+                $.toast({
+                    heading: 'Success',
+                    text: "Profil Berhasil diupdate.",
+                    showHideTransition: 'slide',
+                    icon: 'success',
+                    hideAfter: false,
+                    position: 'bottom-right',
+                    bgColor: '#7EC857'
+                });
+        </script>
+    <?php else :?>
+    <?php endif ;?>
 </body>
 </html>

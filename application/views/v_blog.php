@@ -11,7 +11,7 @@
     <div class="container">
         <div class="row">
 					<div class="col-12 mb-3">
-						<h2>Berita Terbaru</h2>
+						<h2><?= $judul ?></h2>
 					</div>
             <div class="col-lg-8">
                 <div class="row">
@@ -24,6 +24,7 @@
                       $post_image=$j['tulisan_gambar'];
                       $post_tglpost=$j['tanggal'];
                       $post_slug=$j['tulisan_slug'];
+                      $post_kat=$j['tulisan_kategori_nama'];
                   ?>
 	<div class="col-lg-6 col-md-6 mb-5">
 		<div class="blog-item">
@@ -31,18 +32,17 @@
 
 			<div class="blog-item-content bg-white p-4">
 				<div class="blog-item-meta  py-1 px-2">
-					<span class="text-muted text-capitalize mr-3"><i class="ti-pencil-alt mr-2"></i>Creativity</span>
+					<span class="text-muted text-capitalize mr-3"><i class="fa fa-tag mr-2"></i><?php echo $post_kat;?> <i class="fa fa-clock ml-3 mr-2"></i><?php echo $post_tglpost;?></span>
 				</div> 
 
 				<h3 class="mt-3 mb-3"><a href="<?php echo base_url().'artikel/'.$post_slug;?>"><?php echo $post_judul;?></a></h3>
 				<p class="mb-4"><?php echo limit_words($post_isi,10).'...';?></em></p>
 
-				<a href="<?php echo base_url().'artikel/'.$post_slug;?>" class="btn btn-small btn-main btn-round-full">Baca...</a>
+				<a href="<?php echo base_url().'artikel/'.$post_slug;?>" class="btn btn-small btn-main btn-round-full">Baca Selengkapnya...</a>
 			</div>
 		</div>
 	</div>
   <?php endforeach;?>
-
 
   </div>
 </div>
@@ -50,8 +50,10 @@
 <div class="col-lg-4">
   <div class="sidebar-wrap">
 	<div class="sidebar-widget search card p-4 mb-3 border-0">
-		<input type="text" class="form-control" placeholder="search">
-		<a href="#" class="btn btn-mian btn-small d-block mt-2">search</a>
+    <form action="<?php echo base_url().'blog/search'?>" method="post">
+      <input type="text" name="xfilter" class="form-control" placeholder="search">
+      <button type="submit" class="btn btn-mian btn-small d-block mt-2 w-100">search</button>
+    </form>
 	</div>
 
 
@@ -86,10 +88,7 @@
             <div class="col-lg-8">
                 <nav class="navigation pagination py-2 d-inline-block">
                     <div class="nav-links">
-                        <a class="prev page-numbers" href="#">Prev</a>
-                        <span aria-current="page" class="page-numbers current">1</span>
-                        <a class="page-numbers" href="#">2</a>
-                        <a class="next page-numbers" href="#">Next</a>
+                    <?php echo $page;?>
                     </div>
                 </nav>
             </div>

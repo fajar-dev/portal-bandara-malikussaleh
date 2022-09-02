@@ -29,6 +29,7 @@ class Blog extends CI_Controller{
 		$x['data']=$this->m_tulisan->berita_perpage($offset,$limit);
 		$x['populer']=$this->m_tulisan->get_tulisan_populer();
 		$x['kat']=$this->m_tulisan->get_kategori_for_blog();
+		$x['judul']= 'Berita Terbaru';
 		$this->load->view('include/v_header',$x);
 		$this->load->view('v_blog');
 		$this->load->view('include/v_footer');
@@ -44,11 +45,13 @@ class Blog extends CI_Controller{
 		$x['populer']=$this->m_tulisan->get_tulisan_populer();
 		$x['terbaru']=$this->m_tulisan->get_tulisan_terbaru();
 		$x['kat']=$this->m_tulisan->get_kategori_for_blog();
-		$this->load->view('v_blog_detail',$x);
+		$this->load->view('include/v_header',$x);
+		$this->load->view('v_blog_detail');
+		$this->load->view('include/v_footer');
 	}
 
-	function kategori(){
-		$kategori_id=$this->uri->segment(3);
+	function kategori($id){
+		$kategori_id=$id;
 		$jum=$this->m_tulisan->get_tulisan_by_kategori($kategori_id);
         $page=$this->uri->segment(4);
         if(!$page):
@@ -68,13 +71,24 @@ class Blog extends CI_Controller{
         $this->pagination->initialize($config);
         $x['page'] =$this->pagination->create_links();
 		$x['data']=$this->m_tulisan->get_tulisan_by_kategori_perpage($kategori_id,$offset,$limit);
-		$this->load->view('v_blog',$x);
+		$x['populer']=$this->m_tulisan->get_tulisan_populer();
+		$x['kat']=$this->m_tulisan->get_kategori_for_blog();
+		$hasil = $this->db->get_where('tbl_kategori', array('kategori_id'=> $id))->row();
+		$x['judul']= 'Kategori "'.$hasil->kategori_nama.'"';
+		$this->load->view('include/v_header',$x);
+		$this->load->view('v_blog');
+		$this->load->view('include/v_footer');
 	}
 
 	function search(){
 		$keyword=str_replace("'", "", $this->input->post('xfilter',TRUE));
 		$x['data']=$this->m_tulisan->search_tulisan($keyword);
-		$this->load->view('v_blog',$x);
+		$x['populer']=$this->m_tulisan->get_tulisan_populer();
+		$x['kat']=$this->m_tulisan->get_kategori_for_blog();
+		$x['judul']= 'Hasil Pencarian "'.$keyword.'"';
+		$this->load->view('include/v_header',$x);
+		$this->load->view('v_blog');
+		$this->load->view('include/v_footer');;
 	}
 
 	function komentar(){

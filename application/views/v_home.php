@@ -10,14 +10,14 @@
 
 <div class="main-wrapper ">
 <!-- Slider Start -->
-<section class="slider">
+<section class="slider" style="background: url(<?= base_url('template/') ?>images/bg/pesawat1.jpg) no-repeat; background-size:cover;">
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-9 col-md-10">
 				<div class="block">
 					<span class="d-block mb-3 text-white text-capitalize">Selamat Datang di</span>
 					<h1 class="animated fadeInUp mb-5">Website Resmi <br> Bandar Udara <br>Malikussaleh</h1>
-					<a href="#" target="_blank" class="btn btn-main animated fadeInUp btn-round-full" >Get started<i class="btn-icon fa fa-angle-right ml-2"></i></a>
+					<a href="#start" class="btn btn-main animated fadeInUp btn-round-full" >Info Selengkapya<i class="btn-icon fa fa-angle-right ml-2"></i></a>
 				</div>
 			</div>
 		</div>
@@ -26,27 +26,26 @@
 <!-- Section Intro Start -->
 
 <!-- Section About Start -->
-<section class="section about-2 position-relative">
+<section class="section about-2 position-relative" id="start">
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-6 col-md-6">
 				<div class="about-item pr-3 mb-5 mb-lg-0">
-					<span class="h6 text-color">Profil Kami</span>
+					<span class="h6 text-color">Profil</span>
 					<h2 class="mt-1 mb-4 position-relative content-title">Tentang Bandara Malikussaleh</h2>
-					<p class="mb-3">We provide consulting services in the area of IFRS and management reporting, helping companies to reach their highest level. We optimize business processes, making them easier.</p>
+					<p class="mb-3"><?php echo limit_words($profil->isi,40).'...';?></p>
 
-					<a href="#" class="btn btn-main btn-round-full">Baca Selengkapnya</a>
+					<a href="<?= base_url('profil')?>" class="btn btn-main btn-round-full">Baca Selengkapnya</a>
 				</div>
 			</div>
 			<div class="col-lg-6 col-md-6">
 				<div class="about-item-img">
-					<img src="<?= base_url('template/') ?>images/about/home-7.jpg" alt="" class="img-fluid rounded">
+					<img src="<?= base_url('assets/images/')?><?= $profil->foto ?>" alt="" class="img-fluid rounded">
 				</div>
 			</div>
 		</div>
 	</div>
 </section>
-
 
 <!-- Section Testimonial End -->
 <section class="section latest-blog bg-2">
@@ -92,7 +91,7 @@
 	</div>
 </section>
 
-<section class="mt-70 position-relative">
+<section class="mt-70 position-relative" id="kontak">
 	<div class="container">
 	<div class="cta-block-2 bg-gray p-5 rounded border-1">
 		<div class="row">

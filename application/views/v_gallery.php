@@ -1,6 +1,6 @@
 
 <!-- section portfolio start -->
-<section class="section portfolio pb-0">
+<section class="section portfolio pb-0 bg-gray">
 	<div class="container">
 		<div class="row justify-content-center">
 			<div class="col-lg-7 text-center">

@@ -25,7 +25,7 @@
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
-    <p class="login-box-msg"> <img src="<?php echo base_url().'assets/images/mylogo.png'?>"></p><hr/>
+    <p class="login-box-msg"> <img src="<?php echo base_url().'assets/images/favicon.png'?>" width="100" class="img-fluid"></p><hr/>
 
     <form action="<?php echo base_url().'administrator/auth'?>" method="post">
       <div class="form-group has-feedback">
@@ -55,7 +55,7 @@
     
     <!-- /.social-auth-links -->
     <hr/>
-    <p><center>Copyright <?php echo '2017'?> by M Fikri Setiadi <br/> All Right Reserved</center></p>
+    <p><center>Copyright &copy; 2022 Bandara Malikussaleh</center></p>
   </div>
   <!-- /.login-box-body -->
 </div>

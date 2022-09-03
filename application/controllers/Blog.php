@@ -31,6 +31,7 @@ class Blog extends CI_Controller{
 		$x['kat']=$this->m_tulisan->get_kategori_for_blog();
 		$x['judul']= 'Berita Terbaru';
 		$x['set'] = $this->db->get_where('tbl_setting', array('id'=> 1))->row();
+		$x['title'] = 'Blog';
 		$this->load->view('include/v_header',$x);
 		$this->load->view('v_blog');
 		$this->load->view('include/v_footer');
@@ -41,11 +42,14 @@ class Blog extends CI_Controller{
 		$q=$data->row_array();
 		$kode=$q['tulisan_id'];
 		$this->m_tulisan->count_views($kode);
+		$x['status'] = 1;
 		$x['data']=$this->m_tulisan->get_berita_by_slug($slug);
 		$x['populer']=$this->m_tulisan->get_tulisan_populer();
 		$x['terbaru']=$this->m_tulisan->get_tulisan_terbaru();
 		$x['kat']=$this->m_tulisan->get_kategori_for_blog();
 		$x['set'] = $this->db->get_where('tbl_setting', array('id'=> 1))->row();
+		$x['title'] = $x['data']->row()->tulisan_judul;
+		$x['status'] = 1;
 		$this->load->view('include/v_header',$x);
 		$this->load->view('v_blog_detail');
 		$this->load->view('include/v_footer');
@@ -77,6 +81,7 @@ class Blog extends CI_Controller{
 		$hasil = $this->db->get_where('tbl_kategori', array('kategori_id'=> $id))->row();
 		$x['set'] = $this->db->get_where('tbl_setting', array('id'=> 1))->row();
 		$x['judul']= 'Kategori "'.$hasil->kategori_nama.'"';
+		$x['title'] = $hasil->kategori_nama;
 		$this->load->view('include/v_header',$x);
 		$this->load->view('v_blog');
 		$this->load->view('include/v_footer');
@@ -89,6 +94,7 @@ class Blog extends CI_Controller{
 		$x['kat']=$this->m_tulisan->get_kategori_for_blog();
 		$x['judul']= 'Hasil Pencarian "'.$keyword.'"';
 		$x['set'] = $this->db->get_where('tbl_setting', array('id'=> 1))->row();
+		$x['title'] = 'Blog';
 		$this->load->view('include/v_header',$x);
 		$this->load->view('v_blog');
 		$this->load->view('include/v_footer');;

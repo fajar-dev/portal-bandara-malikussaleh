@@ -1,14 +1,30 @@
+
 <!doctype html>
 <html lang="en">
   <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="megakit,business,company,agency,multipurpose,modern,bootstrap4">
-  
-  <meta name="author" content="themefisher.com">
-
-  <title>Bandara Malikussaleh</title>
+	<?php
+		if(empty($status)){ 
+	?>
+		<meta name="description" content="Selamat datang di website resmi Bandara Udara Malikussaleh">
+		<meta property="og:description" content="Selamat datang di website resmi Bandara Udara Malikussaleh" />
+		<meta property="og:image" content="<?= base_url('template/') ?>images/logo.jpg" />
+	<?php
+		}else{ 
+	?>
+		<meta name="description" content="<?php echo str_replace("<p>","",substr($data->row()->tulisan_isi, 0, 100));?>">
+		<meta property="og:description" content="<?php echo str_replace("<p>","",substr($data->row()->tulisan_isi, 0, 100));?>" />
+		<meta property="og:image" content="<?= base_url('assets/') ?>images/<?= $data->row()->tulisan_gambar?>" />
+	<?php
+		}
+	?>
+  <meta property="og:url" content="<?= base_url() ?>" />
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Malikussaleh-Airport | <?php echo $title ?>" />
+  <title>Malikussaleh-Airport | <?php echo $title ?></title>
+	
   <link rel="shorcut icon" type="text/css" href="<?php echo base_url().'assets/images/favicon.png'?>">
   <!-- bootstrap.min css -->
   <link rel="stylesheet" href="<?= base_url('template/') ?>plugins/bootstrap/css/bootstrap.min.css">

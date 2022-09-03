@@ -69,7 +69,7 @@
 	</div>
 	<nav class="navbar navbar-expand-lg  py-4" id="navbar">
 		<div class="container">
-		  <a class="navbar-brand" href="index.html">
+		  <a class="navbar-brand" href="<?= base_url() ?>">
 		  	<img src="<?= base_url('template/images/dishub.png') ?>" width="40" alt="">
 		  </a>
 

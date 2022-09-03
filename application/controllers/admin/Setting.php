@@ -5,7 +5,9 @@ class Setting extends CI_Controller{
 		if(!isset($_SESSION['logged_in'])){
             $url=base_url('administrator');
             redirect($url);
-        };
+    }elseif($_SESSION['level'] != 1 ){
+			redirect(base_url('admin/dashboard')); 
+		};
 		$this->load->model('m_pengunjung');
 	}
 

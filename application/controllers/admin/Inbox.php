@@ -5,7 +5,7 @@ class Inbox extends CI_Controller{
 		if(!isset($_SESSION['logged_in'])){
             $url=base_url('administrator');
             redirect($url);
-        };
+    };
 		$this->load->model('m_kontak');
 	}
 

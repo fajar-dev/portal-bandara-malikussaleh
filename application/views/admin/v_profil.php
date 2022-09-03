@@ -62,6 +62,7 @@
             </span>
           </a>
         </li>
+        <?php  if($_SESSION['level'] == 1 ){ ?>
         <li class="active">
           <a href="<?php echo base_url().'admin/profil'?>">
           <i class="fa fa-plane" aria-hidden="true"></i> <span>Profil</span>
@@ -78,6 +79,15 @@
             </span>
           </a>
         </li>
+        <li>
+          <a href="<?php echo base_url().'admin/pengguna'?>">
+            <i class="fa fa-users"></i> <span>Pengguna</span>
+            <span class="pull-right-container">
+              <small class="label pull-right"></small>
+            </span>
+          </a>
+        </li>
+        <?php } ?>
         <li class="treeview">
           <a href="#">
             <i class="fa fa-newspaper-o"></i>
@@ -92,16 +102,6 @@
             <li><a href="<?php echo base_url().'admin/kategori'?>"><i class="fa fa-wrench"></i> Kategori</a></li>
           </ul>
         </li>
-
-        <li>
-          <a href="<?php echo base_url().'admin/pengguna'?>">
-            <i class="fa fa-users"></i> <span>Pengguna</span>
-            <span class="pull-right-container">
-              <small class="label pull-right"></small>
-            </span>
-          </a>
-        </li>
-       
         <li class="treeview">
           <a href="#">
             <i class="fa fa-camera"></i>

@@ -25,8 +25,8 @@
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
-    <p class="login-box-msg"> <img src="<?php echo base_url().'assets/images/favicon.png'?>" width="100" class="img-fluid"></p><hr/>
-
+    <div class="login-box-msg"> <img src="<?php echo base_url().'assets/images/favicon.png'?>" width="100" class="img-fluid"></div>
+    <h4 class="text-center">Content Management System <br>Bandara Malikussaleh</h4><hr/>
     <form action="<?php echo base_url().'administrator/auth'?>" method="post">
       <div class="form-group has-feedback">
         <input type="text" name="username" class="form-control" placeholder="Username" required>
